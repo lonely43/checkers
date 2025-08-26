@@ -1,12 +1,29 @@
-mod board;
+// use std::io::{stdin, stdout, Write};
 
-use board::Board;
+use game::Game;
+
+mod board;
+mod game;
+mod move_validator;
 
 #[allow(dead_code)]
 fn main() {
-    let board: Board = Board::new();
+    let mut game = Game::new();
 
-  //  board.render();
+    loop {
+        game.render();
 
-    board.debug_render();
+        { // testing
+            game.make_move((5, 0), (4, 1));
+            game.render();
+            game.make_move((2, 1), (3, 2));
+        }
+
+        if !game.is_game_over() {
+            // temporarily | checking if the game is over
+            break;
+        }
+    }
+
+    game.render();
 }

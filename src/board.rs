@@ -3,6 +3,7 @@ pub struct Board {
     cells: [[i8; 8]; 8],
 }
 
+#[allow(dead_code)]
 impl Board {
     pub fn new() -> Self {
         let mut cells = [[0; 8]; 8];
@@ -24,12 +25,24 @@ impl Board {
         Board { cells }
     }
 
+    pub fn get_cells(&self) -> [[i8; 8]; 8] {
+        self.cells
+    }
+
+    pub fn get_cell(&self, pos: (usize, usize)) -> i8 {
+        self.cells[pos.0][pos.1]
+    }
+
+    pub fn set_cell(&mut self, pos: (usize, usize), new_value: i8) {
+        self.cells[pos.0][pos.1] = new_value;
+    }
+
     pub fn render(&self) {
         println!("    a  b  c  d  e  f  g  h   ");
         println!("  +------------------------+");
 
         for (row, cells_in_col) in self.cells.iter().enumerate() {
-            print!("{} |", 8 - row);
+            print!("{} |", row);
 
             for (col, cell) in cells_in_col.iter().enumerate() {
                 let symbol = match cell {
@@ -46,7 +59,7 @@ impl Board {
                 print!("{}", symbol);
             }
 
-            println!("| {}", 8 - row);
+            println!("| {}", row);
         }
 
         println!("  +------------------------+");
