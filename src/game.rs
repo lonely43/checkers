@@ -14,7 +14,7 @@ impl Game {
     }
 
     pub fn make_move(&mut self, from: (usize, usize), to: (usize, usize)) {
-        if !is_valid_move(&self.board, from, to) {
+        if !is_valid_move(&self.board, from, to, self.player) {
             println!("Impossible move");
         }
 

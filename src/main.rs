@@ -13,7 +13,8 @@ fn main() {
     loop {
         game.render();
 
-        { // testing
+        {
+            // testing
             game.make_move((5, 0), (4, 1));
             game.render();
             game.make_move((2, 1), (3, 2));
