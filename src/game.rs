@@ -1,3 +1,5 @@
+use anyhow::{Result, anyhow};
+
 use crate::{board::Board, move_validator::is_valid_move};
 
 pub struct Game {
@@ -13,15 +15,16 @@ impl Game {
         }
     }
 
-    pub fn make_move(&mut self, from: (usize, usize), to: (usize, usize)) {
+    pub fn make_move(&mut self, from: (usize, usize), to: (usize, usize)) -> Result<()> {
         if !is_valid_move(&self.board, from, to, self.player) {
-            println!("Impossible move");
+            return Err(anyhow!("impossible move"));
         }
 
         self.board.set_cell(from, 0);
         self.board.set_cell(to, self.player);
 
         self.change_turn();
+        Ok(())
     }
 
     pub fn is_game_over(&self) -> bool {
