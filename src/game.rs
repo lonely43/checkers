@@ -1,6 +1,6 @@
-use anyhow::{Result, anyhow};
-
 use crate::{board::Board, move_validator::is_valid_move};
+
+use anyhow::{anyhow, Result};
 
 pub struct Game {
     board: Board,
@@ -28,7 +28,7 @@ impl Game {
     }
 
     pub fn is_game_over(&self) -> bool {
-        false
+        false // logic
     }
 
     fn change_turn(&mut self) {

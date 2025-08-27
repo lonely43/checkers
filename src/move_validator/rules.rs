@@ -12,22 +12,24 @@ pub fn check_basic_rules(board: &Board, from: (usize, usize), to: (usize, usize)
         return false;
     }
 
-    // is it piece
+    // is from a piece
     if board.get_cell(from) == 0 {
         println!("{},{} - it is the empty cell", from.0, from.1);
         return false;
     }
-
-    if board.get_cell(to) == player{
-        println!("That cell is already occupated by you");
-        return false;
-    }
-
+    
     // is it player's piece
     if !(board.get_cell(from) == player || board.get_cell(from) == player+1 || board.get_cell(from) == player-1) {
         println!("{},{} - choose your piece", from.0, from.1);
         return false;
     }
+    
+    // is target valid
+    if board.get_cell(to) == player{
+        println!("That cell is already occupated by you");
+        return false;
+    }
+
 
     //check is it a diagonal move
 
