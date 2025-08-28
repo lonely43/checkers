@@ -42,7 +42,7 @@ impl Board {
         println!("  +------------------------+");
 
         for (row, cells_in_col) in self.cells.iter().enumerate() {
-            print!("{} |", row);
+            print!("{} |", row + 1);
 
             for (col, cell) in cells_in_col.iter().enumerate() {
                 let symbol = match cell {
@@ -59,7 +59,7 @@ impl Board {
                 print!("{}", symbol);
             }
 
-            println!("| {}", row);
+            println!("| {}", row + 1);
         }
 
         println!("  +------------------------+");

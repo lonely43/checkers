@@ -1,5 +1,5 @@
 mod moves;
-mod rules;
+pub mod rules;
 
 use crate::board::Board;
 

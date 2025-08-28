@@ -1,5 +1,3 @@
-use std::io::{stdout, Write};
-
 use crate::game::Game;
 use crate::onboarding::{pick_piece, pick_target};
 
@@ -14,12 +12,8 @@ fn main() {
     loop {
         game.render();
 
-        println!("choose piece: ");
-        _ = stdout().flush();
         let from: (usize, usize) = pick_piece();
 
-        println!("choose target: ");
-        _ = stdout().flush();
         let to: (usize, usize) = pick_target();
 
         match game.make_move(from, to) {
