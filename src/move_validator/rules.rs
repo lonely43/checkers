@@ -27,7 +27,7 @@ pub fn check_basic_rules(board: &Board, from: (usize, usize), to: (usize, usize)
         return false;
     }
 
-    // is from a piece
+    // is the "from" a piece
     if board.get_cell(from) == 0 {
         println!("{},{} - it is not a piece", from.0+1, from.1);
         return false;
@@ -39,7 +39,7 @@ pub fn check_basic_rules(board: &Board, from: (usize, usize), to: (usize, usize)
         return false;
     }
 
-    // is target valid
+    // is the target valid
     if board.get_cell(to) == player {
         println!("That cell is already occupated by you");
         return false;

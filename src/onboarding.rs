@@ -13,6 +13,18 @@ pub fn pick_piece() -> (usize, usize) {
     }
 }
 
+pub fn pick_target() -> (usize, usize) {
+    println!("choose target: ");
+    _ = stdout().flush();
+
+    loop {
+        let to = get_piece(); // -> (row,col)
+        if is_in_board(to) {
+            return to;
+        }
+    }
+}
+
 fn get_piece() -> (usize, usize) {
     loop {
         let mut input = String::new();
@@ -37,7 +49,7 @@ fn get_piece() -> (usize, usize) {
                 break i;
             }
 
-            i = i+1;
+            i = i + 1;
             if i > 8 {
                 break 99; // not a valid
             }
@@ -46,8 +58,8 @@ fn get_piece() -> (usize, usize) {
             println!("choose column in range a-h");
             continue;
         }
-        
-        //row 
+
+        //row
         let row: usize = match pos[1].trim().to_string().parse() {
             Ok(result) => result,
             Err(_) => {
@@ -58,16 +70,5 @@ fn get_piece() -> (usize, usize) {
         let row = row - 1;
 
         return (row, col);
-    }
-}
-
-pub fn pick_target() -> (usize, usize) {
-    println!("choose target: ");
-    _ = stdout().flush();
-    loop {
-        let to = get_piece();
-        if is_in_board(to) {
-            return to;
-        }
     }
 }
