@@ -22,7 +22,7 @@ pub fn is_in_board(pos: (usize, usize)) -> bool {
 #[allow(dead_code, unused)]
 pub fn check_basic_rules(board: &Board, from: (usize, usize), to: (usize, usize), player: i8) -> bool {
     // check limits
-    if !is_in_board(from) && !is_in_board(to) {
+    if !is_in_board(from) || !is_in_board(to) {
         println!("impossible positision");
         return false;
     }
