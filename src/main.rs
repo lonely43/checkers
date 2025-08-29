@@ -8,10 +8,8 @@ mod onboarding;
 
 fn main() {
     let mut game = Game::new();
-
+    game.render();
     loop {
-        game.render();
-
         let from: (usize, usize) = pick_piece();
         let to: (usize, usize) = pick_target();
 
