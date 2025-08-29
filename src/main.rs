@@ -13,7 +13,6 @@ fn main() {
         game.render();
 
         let from: (usize, usize) = pick_piece();
-
         let to: (usize, usize) = pick_target();
 
         match game.make_move(from, to) {
