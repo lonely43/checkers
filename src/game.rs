@@ -17,7 +17,7 @@ impl Game {
 
     pub fn make_move(&mut self, from: (usize, usize), to: (usize, usize)) -> Result<()> {
         if !is_valid_move(&self.board, from, to, self.player) {
-            return Err(anyhow!("impossible move"));
+            return Err(anyhow!("impossible move")); //useless msg
         }
 
         self.board.set_cell(from, 0);
