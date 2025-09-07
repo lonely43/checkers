@@ -1,16 +1,12 @@
 use crate::board::Board;
 
 pub fn is_in_board(pos: (usize, usize)) -> bool {
-    fn is_in(pos: usize) -> bool {
-        return pos < 8;
-    }
-
-    if !is_in(pos.0) {
+    if !(pos.0 < 8) {
         println!("{} - uncorrect row", pos.0 + 1);
         println!("type a correct position around 0-7: ");
         return false;
     }
-    if !is_in(pos.1) {
+    if !(pos.1 < 8) {
         println!("{} - uncorrect column", pos.1);
         println!("type a correct position around a-h: ");
         return false;
@@ -48,7 +44,7 @@ pub fn check_basic_rules(board: &Board, from: (usize, usize), to: (usize, usize)
     // 5. check is it a diagonal move
     let row_diff = (to.0 as isize - from.0 as isize).abs();
     let col_diff = (to.1 as isize - from.1 as isize).abs();
-    
+
     if !(row_diff == col_diff && row_diff > 0) {
         println!("isn't a diagonal move");
         return false;
